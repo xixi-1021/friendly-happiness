@@ -4,67 +4,199 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-void menu()
+#include <math.h>
+
+int binary_search(int arr[], int k, int sz)
+
 {
-	printf("**************************\n");
-	printf("**** 1.play    0.exit ****\n");
-	printf("**************************\n");
-}
-void game()
-{
-	int ret = 0;
-	int guess = 0;
-	srand((unsigned int)time(NULL));
-	//时间戳
-	ret = rand()%100+1;
-	while (1)
+	 
+	int left = 0;
+	int right = sz - 1;
+
+	while (left <= right)
 	{
-		printf("猜猜数字:>");                              //简单的猜数字游戏
-		scanf("%d", &guess);
-		if (guess > ret)
+		int mid = (left + right) / 2;               //重要的函数的二分查找
+		if (arr[mid] < k)
 		{
-			printf("猜大了\n");
+			left = mid + 1;
 		}
-		else if (guess < ret)
+		else if (arr[mid] > k)
 		{
-			printf("猜小了 \n");
+			right = mid - 1;
 		}
 		else
 		{
-			printf("恭喜你，猜对了\n");
-			break;
+			return mid;
 		}
+
 	}
-	printf("%d\n", ret);
+	return -1;
 }
+
 int main()
 {
-	int input = 0;
-	do 
+	int arr[] = { 1,2,3,4,5,6,7,8,9,10 };
+	int k = 7;
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int ret = binary_search(arr, k, sz);
+	if (ret == -1)
 	{
-		menu();
-		printf("请选择>:");
-		scanf("%d", &input);
-		switch (input)
-		{
-		case 1:
-			game();
-			break;
-		case 0:
-			printf("退出游戏\n");
-			break;
-		default:
-			printf("选择错误\n");
-			break;
-		}
-
-
-	} while (input);
+		printf("找不到指定的数字 \n");
+	}
+	else
+	{
+		printf("找到了，下标是：%d\n", ret);
+	}
 	return 0;
+
 }
 
 
 
+
+
+
+
+
+
+
+//int is_leap_year(int y)
+//{
+//	if((y%4==0&&y%100!=0)|| (y%400==0))                    //打印闰年
+//		return 1;
+//	else
+//		return 0;
+//}
+//int main()
+//{
+//	int year = 0;
+//	for (year = 1000; year <= 2000; year++)
+//	{
+//		if (1 == is_leap_year(year))
+//		{
+//			printf("%d ", year);
+//		}
+//	}
+//	return 0;
+//}
+//
+
+
+//int is_prime(int n)
+//{
+//	int j = 0;
+//	for (j = 2; j <= sqrt(n); j++)
+//		{
+//			if (n % j == 0)
+//				return 0;                         //is_prime打印素数 
+//	     }
+//	return 1;
+//}
+//
+//int main()
+//{
+//	int i = 0;
+//	for (i = 100; i <= 200; i++)
+//	{
+//		if (is_prime(i) == 1)
+//			printf("%d ", i);
+//	}
+//	return 0;
+//}
+//// 
+//void Swap1(int x, int y)
+//{
+//	int tmp = 0;
+//	tmp = x;
+//	x = y;
+//	y = tmp;;
+//}
+//void Swap2(int* pa, int* pb)                  //当实参传给形参时
+//                                              //形参只是实参的一份临时拷贝
+//	                                          //对形参的修改不会改变实参   
+//{
+//	int tmp = 0;
+//	tmp = *pa;
+//	*pa = *pb;                        //ab交换
+//	*pb = tmp;
+//}
+//int main()
+//{
+//	int a = 10;
+//	int b = 20;
+//	printf("a=%d b=%d\n", a, b);
+//	Swap1(a, b);
+//	Swap2(&a, &b);
+//	printf("a=%d b=%d\n", a, b);               //<----不同ab
+//	return 0;
+//}
+//// 
+//// 
+//// 
+//// 
+//// 
+//// 
+//void menu()
+//{
+//	printf("**************************\n");
+//	printf("**** 1.play    0.exit ****\n");
+//	printf("**************************\n");
+//}
+//void game()
+//{
+//	int ret = 0;
+//	int guess = 0;
+//	srand((unsigned int)time(NULL));
+//	//时间戳
+//	ret = rand()%100+1;
+//	while (1)
+//	{
+//		printf("猜猜数字:>");                              //简单的猜数字游戏
+//		scanf("%d", &guess);
+//		if (guess > ret)
+//		{
+//			printf("猜大了\n");
+//		}
+//		else if (guess < ret)
+//		{
+//			printf("猜小了 \n");
+//		}
+//		else
+//		{
+//			printf("恭喜你，猜对了\n");
+//			break;
+//		}
+//	}
+//	printf("%d\n", ret);
+//}
+//int main()
+//{
+//	int input = 0;
+//	do 
+//	{
+//		menu();
+//		printf("请选择>:");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break;
+//		default:
+//			printf("选择错误\n");
+//			break;
+//		}
+//
+//
+//	} while (input);
+//	return 0;
+//}
+//
+//
+//
 
 
 
