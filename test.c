@@ -5,39 +5,98 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-int Fib(int n)
-{
-	int a = 1;
-	int b = 1;
-	int c = 1;
 
-	while (n > 2)
-	{
-		c = a + b;
-		a = b;
-		b = c;                          //递归经常会栈溢出
-		n--;
-	}
-	return c;                                  //求斐波那契数列更好
-
-}
 
 
 int main()
 {
-	int n = 0;
-	int ret = 0;
-	scanf("%d", &n);
-	ret = Fib(n);
-	printf("ret = %d\n", ret);
 
+	int arr[3][4] = { {1,2,3,4 },{5,6,7,8} };    
+	int i = 0;
+	for (i = 0; i < 3; i++)
+	{
+		int j = 0;                                                //取地址
+		for (j = 0; j < 4; j++)
+		{
+			printf("&arr[%d][%d] = %p\n ",i, j , &arr[i][j]);
+		}
+		printf("%d\n");
+	}
 	return 0;
 }
+  
 
-
-//int Fib(int n)
+//
+//int main()
 //{
-//	if (n <=2)
+//
+//	int arr[3][4] = {{1,2,3,4 },{5,6,7,8}};    //行可以省列不可以省，下标都是从0开始
+//	int i = 0;
+//	for (i = 0; i <3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 4;j++)
+//		{
+//			printf("%d ", arr[i][j]);
+//		}
+//		printf("%d\n");
+//	}
+//	return 0;
+//}
+
+
+//int main()
+//{
+//	
+//	int arr[][4] = { { 1,2,3,4 }, { 5, 6, 7, 8 } };              //行可以省列不可以省，下标都是从0开始
+//return 0;
+//}
+
+
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5,6,7,8,9,10 };
+//	int sz = sizeof(arr1)/sizeof(arr1[0]);
+//	int i = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("&arr[%d] = %p\n", &arr1[i]);
+//		}
+//	return 0;
+//}
+////int Fib(int n)
+//{
+//	int a = 1;
+//	int b = 1;
+//	int c = 1;
+//
+//	while (n > 2)
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;                          //递归经常会栈溢出
+//		n--;
+//	}
+//	return c;                                  //求斐波那契数列更好
+//
+//}
+//
+//
+//int main()
+//{
+//	int n = 0;
+//	int ret = 0;
+//	scanf("%d", &n);
+//	ret = Fib(n);
+//	printf("ret = %d\n", ret);
+//
+//	return 0;
+//}
+//
+//
+////int Fib(int n)
+////{
+////	if (n <=2)
 //	{
 //		return 1;
 //	}
