@@ -7,24 +7,121 @@
 #include <math.h>
 
 
+#include "game.h"
+
+
+void menu()
+{
+	printf("******************************\n");
+	printf("****1.play  ****** 0.exit ****\n");
+	printf("******************************\n");
+}
+void game()
+{
+	char board[ROW][COL] = { 'a'};
+	InitBoard(board, ROW, COL);
+	DisplayBoard(board, ROW, COL);
+}
+
+void test()
+{
+	int input = 0;
+	do
+	{
+		menu();
+		printf("请选择:>");
+		scanf("%d", &input);
+		switch (input)
+		{
+		case 1:
+			game();
+			printf("三子棋\n");
+			break;
+		case 0:
+			printf("退出游戏\n");
+			break;
+		default:
+			printf("选择错误，请重新选择！\n");
+			break;
+			
+		}
+
+	} while (input);
+}
+
 
 int main()
 {
-
-	int arr[3][4] = { {1,2,3,4 },{5,6,7,8} };    
-	int i = 0;
-	for (i = 0; i < 3; i++)
-	{
-		int j = 0;                                                //取地址
-		for (j = 0; j < 4; j++)
-		{
-			printf("&arr[%d][%d] = %p\n ",i, j , &arr[i][j]);
-		}
-		printf("%d\n");
-	}
+	test();
 	return 0;
 }
-  
+
+
+
+
+
+//
+//void bubble_sort(int arr[], int sz)
+//{
+//	int i = 0;
+//	for (i = 0; i < sz - 1; i++)
+//	{
+//		int flag = 1;
+//		int j = 0;
+//		for (j = 0; j < sz - 1 - i; j++)
+//		{
+//			if (arr[j > arr[j + 1]])
+//			{
+//				int tmp = arr[j];
+//				arr[j] = arr[j + 1];; arr[j + 1];           //数组  从小到大排序
+//				arr[j + 1] = tmp;
+//				 flag = 0;
+//			}
+//			if (flag == 1)
+//			{
+//				break;
+//			}
+//		}
+//	}
+//}
+//	int main()
+//	{
+//		int arr[] = { 9, 8, 7, 6, 5, 4, 3 ,2, 1, 0 };
+//		int i = 0;
+//		int sz = sizeof(arr) / sizeof(arr[0]);
+//		bubble_sort(arr, sz);
+//		for (i = 0; i < sz; i++)
+//		{
+//			printf("%d ", arr[i]);
+//		}
+//		return 0;
+//	}
+
+	
+
+
+
+
+
+//
+//
+//int main()
+//{
+//
+//	int arr[3][4] = { {1,2,3,4 },{5,6,7,8} };    
+//	int i = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;                                                //取地址
+//		for (j = 0; j < 4; j++)
+//		{
+//			printf("&arr[%d][%d] = %p\n ",i, j , &arr[i][j]);
+//		}
+//		printf("%d\n");
+//	}
+//	return 0;
+//}
+//  
 
 //
 //int main()
