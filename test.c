@@ -6,61 +6,42 @@
 #include <time.h>
 #include <math.h>
 
-
 #include "game.h"
-
 
 void menu()
 {
-	printf("******************************\n");
-	printf("****1.play  ****** 0.exit ****\n");
-	printf("******************************\n");                                       //三子棋游戏
+	printf("*************************************\n");
+	printf("***********     1.play    ***********\n");
+	printf("***********     0.exit    ***********\n");
+	printf("*************************************\n");
 }
 void game()
 {
-	char ret = 0;
-	char board[ROW][COL] = { 'a'};
-	//初始化棋盘
-	InitBoard(board, ROW, COL);
+	//雷的信息存储
+	
 
-	DisplayBoard(board, ROW, COL);
-	while (1)
-	{
-		//玩家下棋
-		PlayerMove(board, ROW, COL);
-		DisplayBoard(board, ROW, COL); 
-		//判断玩家是否赢
-		ret = IsWin(board ,ROW ,COL);
-		if (ret != 'C')
-		{
-			break;
-		}
-		ComputerMove(board, ROW, COL);
-		DisplayBoard(board, ROW, COL);
-		ret = IsWin(board, ROW, COL);
-		if (ret != 'C')
-		{
-			break;
-		}
+	// 
+	// 数组存1    无雷0 全部初始为0，随机放1为雷
+// 1.布置雷的信息	//排雷  一个数组放排雷的信息，一个放存雷的信息
+	char mine[ROWS][COLS] = { 0 };
 
+	// 2排查雷的信息 
+	char show[ROWS][COLS] = { 0 };
+	//初始化
+	InitBoard(mine, ROWS, COLS,'0');                              //快乐扫雷
+	InitBoard(show, ROWS, COLS,'*');
+	//打印期盘
+	DisplayBoard(mine,ROW,COL );
+	DisplayBoard(show, ROW, COL);
+	//布置雷
+	SetMine(mine, ROW, COL);
+	DisplayBoard(mine, ROW, COL);
+	//扫雷
+	FindMine(mine,show,ROW,COL);
 
-	}
-	if (ret == '*')
-	{
-		printf("玩家赢\n");
-	}
-	else if (ret == '*')
-	{
-		printf("电脑赢\n");
-
-	}
-	else
-	{
-		printf("平局\n");
-	}
 }
 
-void test() 
+void test()
 {
 	int input = 0;
 	srand((unsigned int)time(NULL));
@@ -71,23 +52,19 @@ void test()
 		scanf("%d", &input);
 		switch (input)
 		{
-		case 1:
-			game();
-			printf("三子棋\n");
-			break;
-		case 0:
-			printf("退出游戏\n");
-			break;
-		default:
-			printf("选择错误，请重新选择！\n");
-			break;
-			
-		}
+			case 1:
+				game();
+				break;
+			case 0:
+				break;
+			default:
+				printf("选择错误，重新选择！\n");
+				break;
 
+
+		}
 	} while (input);
 }
-
-
 int main()
 {
 	test();
@@ -95,7 +72,95 @@ int main()
 }
 
 
-
+//#include "game.h"
+//
+//
+//void menu()
+//{
+//	printf("******************************\n");
+//	printf("****1.play  ****** 0.exit ****\n");
+//	printf("******************************\n");                                       //三子棋游戏
+//}
+//void game()
+//{
+//	char ret = 0;
+//	char board[ROW][COL] = { 'a'};
+//	//初始化棋盘
+//	InitBoard(board, ROW, COL);
+//
+//	DisplayBoard(board, ROW, COL);
+//	while (1)
+//	{
+//		//玩家下棋
+//		PlayerMove(board, ROW, COL);
+//		DisplayBoard(board, ROW, COL); 
+//		//判断玩家是否赢
+//		ret = IsWin(board ,ROW ,COL);
+//		if (ret != 'C')
+//		{
+//			break;
+//		}
+//		ComputerMove(board, ROW, COL);
+//		DisplayBoard(board, ROW, COL);
+//		ret = IsWin(board, ROW, COL);
+//		if (ret != 'C')
+//		{
+//			break;
+//		}
+//
+//
+//	}
+//	if (ret == '*')
+//	{
+//		printf("玩家赢\n");
+//	}
+//	else if (ret == '*')
+//	{
+//		printf("电脑赢\n");
+//
+//	}
+//	else
+//	{
+//		printf("平局\n");
+//	}
+//}
+//
+//void test() 
+//{
+//	int input = 0;
+//	srand((unsigned int)time(NULL));
+//	do
+//	{
+//		menu();
+//		printf("请选择:>");
+//		scanf("%d", &input);
+//		switch (input)
+//		{
+//		case 1:
+//			game();
+//			printf("三子棋\n");
+//			break;
+//		case 0:
+//			printf("退出游戏\n");
+//			break;
+//		default:
+//			printf("选择错误，请重新选择！\n");
+//			break;
+//			
+//		}
+//
+//	} while (input);
+//}
+//
+//
+//int main()
+//{
+//	test();
+//	return 0;
+//}
+//
+//
+//
 
 
 //
